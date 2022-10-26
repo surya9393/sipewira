@@ -10,7 +10,7 @@
                 <hr class="mb-5">
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
-                    <div class="form-floating">
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-top @error('name')
                          is-invalid @enderror" id="name" placeholder="Name" name="name">
                         <label for="floatingInput">Nama Lengkap</label>
@@ -20,7 +20,7 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control @error('username')
                         is-invalid @enderror" name="username" id="username" placeholder="Username">
                         <label for="floatingInput">Username</label>
@@ -30,7 +30,7 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating mb-3">
                         <input type="number" class="form-control rounded-top @error('phone')
                          is-invalid @enderror" id="phone" placeholder="Name" name="phone">
                         <label for="floatingInput">Nomor Telp</label>
@@ -40,7 +40,7 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating mb-3">
                         <select name="gender" id="gender01" class="form-select @error('gender')
                         is-invalid @enderror">
                             <option value="Laki-laki">Laki-laki</option>
@@ -53,7 +53,7 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating mb-3">
                         <input type="email" name="email" class="form-control @error('email')
                         is-invalid @enderror" id="email" placeholder="name@example.com">
                         <label for="floatingInput">Alamat Email</label>
@@ -63,7 +63,7 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating mb-3">
                         <input type="password" class="form-control rounded-bottom @error('password')
                         is-invalid @enderror" name="password" id="password" placeholder="Password">
                         <label for="floatingPassword">Password</label>

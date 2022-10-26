@@ -17,14 +17,14 @@
       </div>
     </div>
 
-    <div class="icon-boxes position-relative">
+    <div class="icon-boxes " >
       <div class="container position-relative">
-        <div class="row gy-4 mt-5">
+        <div class="row gy-4 mt-5" id="myTab" role="tablist">
 
-          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100" role="presentation">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-easel"></i></div>
-              <h4 class="title"><a href="{{ route('syarat') }}" class="stretched-link">Penyampaian Daftar Usulan</a></h4>
+              <h4 class="title"><a href="#syarat-tab-pane" class="stretched-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#syarat-tab-pane" role="tab" aria-controls="home-tab-pane" aria-selected="true">Penyampaian Daftar Usulan</a></h4>
             </div>
           </div>
           <!--End Icon Box -->
@@ -32,7 +32,7 @@
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-gem"></i></div>
-              <h4 class="title"><a href="{{ route('uji') }}" class="stretched-link">Pelaksanaan Uji Kompetensi</a></h4>
+              <h4 class="title"><a href="#uji-tab-pane" class="stretched-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#uji-tab-pane" role="tab" aria-controls="home-tab-pane" aria-selected="true">Pelaksanaan Uji Kompetensi</a></h4>
             </div>
           </div>
           <!--End Icon Box -->
@@ -52,6 +52,11 @@
             </div>
           </div>
           <!--End Icon Box -->
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active text-center" id="example-tab-pane" role="tabpanel" aria-labelledby="example-tab" tabindex="0"></div>
+            <div class="tab-pane fade show text-center" id="syarat-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0"><img src="{{ asset('assets/img/content/daftar_usulan.jpeg') }}" alt="" height="500"></div>
+            <div class="tab-pane fade text-center" id="uji-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0"><img src="{{ asset('assets/img/content/uji_kompetensi.jpeg') }}" alt="" height="500"></div>
+          </div>
 
         </div>
       </div>

@@ -25,7 +25,7 @@
                 <hr class="mb-5">
                 <form action="{{ route('login.proses') }}" method="POST">
                     @csrf
-                <div class="form-floating">
+                <div class="form-floating mb-3">
                     <input type="email" name="email" class="form-control @error('email') is-invalid
                     @enderror" id="email" placeholder="name@example.com" autofocus required>
                     <label for="floatingInput">Alamat Email</label>
@@ -35,7 +35,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="form-floating">
+                <div class="form-floating mb-3">
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                     <label for="floatingPassword">Password</label>
                 </div>

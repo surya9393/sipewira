@@ -40,7 +40,6 @@
                 <td>
                     <input id="skpns" type="file" name="skpns">
                 </td>
-                <td>
             </tr>
         </div>
 
@@ -111,7 +110,6 @@
                     <b>SK Keterangan dari Pimpinan Tinggi Madya/Pratama:</b>
                 </td>
                 <td></td>
-                <td>
                 </td>
             </tr>
         </div>
