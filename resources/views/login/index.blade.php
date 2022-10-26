@@ -23,7 +23,7 @@
                 <h5 class="mb-3 fw-normal text-center">Sistem Informasi</h5>
                 <h5 class="mb-3 fw-normal text-center">Pengembang Wirausaha</h5>
                 <hr class="mb-5">
-                <form action="{{ route('/login/proses') }}" method="POST">
+                <form action="{{ route('login.proses') }}" method="POST">
                     @csrf
                 <div class="form-floating">
                     <input type="email" name="email" class="form-control @error('email') is-invalid
