@@ -8,7 +8,7 @@
                 <h1 class="h3 mb-3 fw-normal text-center">Formulir Registrasi</h1>
                 <h1 class="h3 mb-3 fw-normal text-center">Jabatan Fungsional</h1>
                 <hr class="mb-5">
-                <form action="{{ url('/register') }}" method="POST">
+                <form action="{{ route('register') }}" method="POST">
                     @csrf
                     <div class="form-floating">
                         <input type="text" class="form-control rounded-top @error('name')

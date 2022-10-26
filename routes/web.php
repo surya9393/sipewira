@@ -29,7 +29,7 @@ use App\Http\Controllers\VerifikasiController;
 Route::get('/', [HomeController::class, 'index']);
 // Daftar
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
 // Login
 Route::controller(LoginController::class)->group(function(){
     Route::get('login','index')->name('login');
