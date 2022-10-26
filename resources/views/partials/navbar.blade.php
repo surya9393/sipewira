@@ -12,7 +12,7 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="/login" class="nav-link">Login</a>
+                    <a href="{{ route('login') }}" class="nav-link">Login</a>
                 </li>
             </ul>
       </nav><!-- .navbar -->

@@ -24,7 +24,7 @@
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-easel"></i></div>
-              <h4 class="title"><a href="{{ url('/usulan') }}" class="stretched-link">Penyampaian Daftar Usulan</a></h4>
+              <h4 class="title"><a href="{{ route('syarat') }}" class="stretched-link">Penyampaian Daftar Usulan</a></h4>
             </div>
           </div>
           <!--End Icon Box -->
@@ -32,7 +32,7 @@
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-gem"></i></div>
-              <h4 class="title"><a href="{{ url('/uji-kompetensi') }}" class="stretched-link">Pelaksanaan Uji Kompetensi</a></h4>
+              <h4 class="title"><a href="{{ route('uji') }}" class="stretched-link">Pelaksanaan Uji Kompetensi</a></h4>
             </div>
           </div>
           <!--End Icon Box -->
@@ -40,7 +40,7 @@
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-geo-alt"></i></div>
-              <h4 class="title"><a href="{{ url('/login') }}" class="stretched-link">Pengumuman</a></h4>
+              <h4 class="title"><a href="{{ route('login') }}" class="stretched-link">Pengumuman</a></h4>
             </div>
           </div>
           <!--End Icon Box -->
@@ -48,7 +48,7 @@
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-command"></i></div>
-              <h4 class="title"><a href="{{ url('login') }}" class="stretched-link">Informasi</a></h4>
+              <h4 class="title"><a href="{{ route('login') }}" class="stretched-link">Informasi</a></h4>
             </div>
           </div>
           <!--End Icon Box -->

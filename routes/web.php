@@ -54,10 +54,10 @@ Route::resource('/verifikasi', VerifikasiController::class)->middleware('auth');
 
 Route::get('/usulan', function(){
     return view('usulan');
-});
+})->name('syarat');
 Route::get('/uji-kompetensi', function(){
     return view('uji');
-});
+})->name('uji');
 // Route::get('/verifikasi', [VerifikasiController::class,'index'])->middleware('auth');
 // Route::get('/verifikasi/pendaftar/{$id}', [VerifikasiController::class,'show'])->middleware('auth');
 // Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');
