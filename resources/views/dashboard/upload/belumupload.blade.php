@@ -1,3 +1,7 @@
+<div class="alert alert-danger alert-dismissible fade show m-5 text-center" role="alert">
+    <strong>Data Persyaratan Anda belum ada!</strong> Silahkan Upload data persyaratan terlebih dahulu
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 <form action="/dashboard/upload/proses" method="POST" enctype="multipart/form-data">
     @csrf
     <table class=" table table-bordered m-5">
@@ -10,24 +14,34 @@
         </div>
         <div class="form-group">
             <tr>
-                <td>1</td>
-                <td>
-                    <b>KTP:</b>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">1</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">KTP:</b>
                 </td>
                     <input type="hidden" name="uid" value=" {{auth()->user()->id}} ">
                 <td>
-                    <input id="ktp" type="file" name="ktp">
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile02" name="ktp">
+                        <label class="input-group-text" for="inputGroupFile02"><a href="#"><i class="bi bi-info-circle-fill"></i></a></label>
+                    </div>
                 </td>
             </tr>
         </div>
         <div class="form-group">
             <tr>
-                <td>2</td>
-                    <td>
-                    <b>NPWP:</b>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">2</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">NPWP:</b>
                 </td>
                 <td>
-                    <input id="ktp" type="file" name="npwp">
+                    <div class="input-group">
+                        <input id="ktp" type="file" name="npwp" class="form-control">
+                        <label class="input-group-text" for="inputGroupFile02"><a href="#"><i class="bi bi-info-circle-fill"></i></a></label>
+                    </div>
                 </td>
             </tr>
         </div>
@@ -190,14 +204,8 @@
                     <input id="peta" type="file" name="peta" >
             </tr>
         </div>
-
-
-        <tr class="text-end">
-            <td></td>
-            <td></td>
-            <td>
-                <input type="submit" value="Upload" class="btn btn-primary">
-            </td>
-        </tr>
     </table>
+    <div class="container text-center">
+        <input type="submit" value="Upload" class="btn btn-primary">
+    </div>
 </form>

@@ -13,7 +13,10 @@ class LoginController extends Controller
                 return redirect()->intended('admin');
             }
             elseif($user->level == '2'){
-                return redirect()->intended('pengguna');
+                return redirect()->intended('editprofile');
+            }
+            elseif($user->level == '3'){
+                return redirect()->intended('dashboard');
             }
         }
 
@@ -34,7 +37,10 @@ class LoginController extends Controller
                 return redirect()->intended('admin');
             }
             elseif($user->level == '2'){
-                return redirect()->intended('pengguna');
+                return redirect()->intended('editprofile');
+            }
+            elseif($user->level == '3'){
+                return redirect()->intended('dashboard');
             }
             return redirect()->intended('/');
         }

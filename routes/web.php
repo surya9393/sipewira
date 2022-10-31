@@ -2,15 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\VerifikasiController;
 
@@ -41,7 +38,10 @@ Route::group(['middleware'=>['auth']], function(){
         Route::resource('admin',AdminController::class);
     });
     Route::group(['middleware'=>['cek_login:2']], function(){
-        Route::resource('pengguna',PenggunaController::class);
+        Route::resource('profile',ProfileController::class);
+    });
+    Route::group(['middleware'=>['cek_login:3']], function(){
+        Route::resource('dashboard',PenggunaController::class);
     });
 });
 //edit pengguna
@@ -86,6 +86,9 @@ Route::get('/uji-kompetensi', function(){
 Route::get('/dashboard/upload', [UploadController::class, 'upload'])->middleware('auth');
 Route::post('/dashboard/upload/proses', [UploadController::class, 'proses_upload'])->middleware('auth');
 Route::get('/dashboard/upload/hapus/{id}', [UploadController::class,'hapus'])->middleware('auth');
-Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
+Route::get('/editprofile', [ProfileController::class, 'show'])->middleware('auth');
 //Lihat Pendaftar
+Route::get('crop-image',[ProfileController::class,'crop'])->name('update.photo');
+Route::post('crop-image-upload', [ProfileController::class,'crop_proses']);
 
+Route::post('update-biodata',[ProfileController::class,'update_data'])->name('update.biodata');

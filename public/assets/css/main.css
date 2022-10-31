@@ -2008,6 +2008,10 @@
     }
   }
 
+  .hero .tab-pane {
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+  }
   .hero .icon-box {
     padding: 60px 30px;
     position: relative;

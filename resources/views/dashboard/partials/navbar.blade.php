@@ -1,14 +1,14 @@
 <header id="header" class="header d-flex align-items-center">
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="/pengguna" class="logo d-flex align-items-center">
+      <a href="/dashboard" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{{ asset('assets/img/logo.png') }}" alt="">
         <h1>SIPE-<span>WIRAUSAHA</span></h1>
       </a>
       <nav id="navbar" class="navbar">
             <ul class=" ms-auto">
-                <li><a href="/pengguna" class="{{ Request::is('pengguna') ? 'active' : ''}}">Home</a></li>
+                <li><a href="/dashboard" class="{{ Request::is('dashboard') ? 'active' : ''}}">Home</a></li>
                 <li><a href="/dashboard/upload" class="{{ Request::is('dashboard/upload') ? 'active' : ''}}">Persyaratan</a></li>
             </ul>
             <ul class="navbar-nav">

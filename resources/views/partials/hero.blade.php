@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="icon-boxes " >
+    <div class="icon-boxes" >
       <div class="container position-relative">
         <div class="row gy-4 mt-5" id="myTab" role="tablist">
 
@@ -52,9 +52,9 @@
             </div>
           </div>
           <!--End Icon Box -->
-          <div class="tab-content" id="myTabContent">
+          <div class="tab-content" id="myTabContent" >
             <div class="tab-pane fade show active text-center" id="example-tab-pane" role="tabpanel" aria-labelledby="example-tab" tabindex="0"></div>
-            <div class="tab-pane fade show text-center" id="syarat-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0"><img src="{{ asset('assets/img/content/daftar_usulan.jpeg') }}" alt="" height="500"></div>
+            <div class="tab-pane fade show text-center" id="syarat-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0"><img src="{{ asset('assets/img/content/daftar_usulan.jpeg') }}" alt="" height="500" data-aos="fade-up" data-aos-delay="100" role="presentation"></div>
             <div class="tab-pane fade text-center" id="uji-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0"><img src="{{ asset('assets/img/content/uji_kompetensi.jpeg') }}" alt="" height="500"></div>
           </div>
 

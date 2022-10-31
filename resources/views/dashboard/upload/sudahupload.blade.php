@@ -89,7 +89,6 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/{{ $getdata->user_id }}" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
                         <a href="/delete {{ $getdata->user_id }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
@@ -105,9 +104,9 @@
                     @endif
                 </td>
                 <td class="text-center">
-                    @if (empty($getdata->npwp))
+                    @if ($verif->s_npwp == '0')
                     <button type="button" class="btn btn-sm btn-danger" data-bs-toogle="tooltip" data-bs-placement="top" title="Data Belum di Verivikasi"><i class="bi bi-x-circle-fill"></i></button>
-                    @else
+                    @elseif ($verif->s_npwp == '1')
                     <button type="button" class="btn btn-sm btn-success" data-bs-toogle="tooltip" data-bs-placement="top" title="Data Sudah di Verivikasi"><i class="bi bi-check-circle-fill"></i></button>
                     @endif
                 </td>

@@ -22,7 +22,6 @@
                     </div>
                         @include('dashboard.upload.sudahupload')
                     @empty
-                        <p class="bg-danger text-white p-1">Data Belum Ada silahkan Upload</p>
                         @include('dashboard.upload.belumupload')
                     @endforelse
                 </div>

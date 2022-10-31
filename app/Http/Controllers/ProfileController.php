@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 
 class ProfileController extends Controller
 {
@@ -52,9 +54,13 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show()
     {
-        //
+        $user = User::findOrFail(Auth::id());
+        return view('dashboard.auth.profile',[
+            'user'=>$user,
+            'title'=>'Profile'
+        ]);
     }
 
     /**
@@ -63,9 +69,11 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit(Request $request)
     {
-        //
+        return view('dashboard.auth.update_profile', [
+            'user' => $request->user()
+        ]);
     }
 
     /**
@@ -128,5 +136,57 @@ class ProfileController extends Controller
     public function destroy(Profile $profile)
     {
         //
+    }
+    public function crop()
+    {
+      return view('dashboard.auth.editdp');
+    }
+    public function crop_proses(Request $request)
+    {
+        $upload = User::where('id', auth()->user()->id)->first();
+        Storage::disk('local_public')->delete('upload/'.$upload->photo);
+        //get All Data
+        $folderPath = public_path('upload/');
+
+        $image_parts = explode(";base64,", $request->image);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+
+        $imageName = uniqid().'.png';
+
+        $imageFullPath = $folderPath.$imageName;
+
+        file_put_contents($imageFullPath, $image_base64);
+
+         DB::table('users')->where('id',auth()->user()->id)->update([
+            'photo' => $imageName
+        ]);
+
+        return response()->json(['success'=>'Crop Image Uploaded Successfully']);
+    }
+
+    public function update_data(Request $request)
+    {
+        $validated_data = $request->validate([
+            'name'=>'required|max:255',
+            'nip'=>['required', 'min:6', 'max:12'],
+            'phone'=>'required',
+            'gender'=>'required',
+            'unit_kerja'=>'required',
+            'instansi'=>'required',
+            'email'=>['required','email:dns'],
+        ]);
+        DB::table('users')->where('id',auth()->user()->id)->update([
+            'name' => $request->name,
+            'nip' => $request->nip,
+            'phone' => $request->phone,
+            'gender'=> $request->gender,
+            'unit_kerja' => $request->unit_kerja,
+            'instansi'=> $request->instansi,
+            'level' => '3',
+            'email' => $request->email
+        ]);
+        return redirect('/dashboard')->with('success', 'Registration was successful!');
     }
 }

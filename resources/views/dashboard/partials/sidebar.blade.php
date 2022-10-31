@@ -5,7 +5,7 @@
             <div class="position-sticky pt-3 sidebar-sticky">
                 <ul class="nav flex-column">
                 <li class="nav-item">
-                <a class="nav-link {{ Request::is('pengguna') ? 'active' : ''}} " aria-current="page" href="/pengguna">
+                <a class="nav-link {{ Request::is('dashboard') ? 'active' : ''}} " aria-current="page" href="/dashboard">
                     <i class="bi bi-house-door-fill"></i>
                     Home
                     </a>

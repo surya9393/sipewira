@@ -5,12 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Upload;
+use App\Models\VerifUpload;
 use Illuminate\Support\Facades\Storage;
 class PenggunaController extends Controller
 {
     public function index(){
         return view('dashboard.index',[
             'title'=>'Dashboard'
+        ]);
+    }
+    public function show()
+    {
+        $verif = VerifUpload::where('upload_id',auth()->user()->id)->get()->first();
+		return view('dashboard.upload.upload',[
+            'upload'=>Upload::get(),
+            'verif'=>$verif,
+            'uploaded'=>Upload::where('user_id', auth()->user()->id)->get(),
+            'title'=>'Upload'
         ]);
     }
     public function edit($id)

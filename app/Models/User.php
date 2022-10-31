@@ -18,15 +18,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'username',
-        'email',
-        'password',
-        'photo',
-        'phone',
-        'gender',
-        'level'
+    protected $guarded = [
+        'id'
     ];
     public function posts()
     {

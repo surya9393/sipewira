@@ -18,14 +18,15 @@ class RegisterController extends Controller
     {
         $validated_data = $request->validate([
             'name'=>'required|max:255',
-            'username'=>['required', 'min:3', 'max:255', 'unique:users' ],
+            'nip'=>['required', 'min:6', 'max:12', 'unique:users,nip' ],
             'phone'=>'required|unique:users,phone',
-            'gender'=>'required',
             'email'=>['required','email:dns','unique:users'],
-            'password'=>'required|min:5|max:255'
+            'password'=>'required|min:5|max:255',
+            // 'confirm_password'=> 'required_with:password|same:password|min:5|max:255',
         ]);
 
         $validated_data['password'] = bcrypt($validated_data['password']);
+        // $validated_data['confirm_password'] = $validated_data['password'];
 
         User::create($validated_data);
         // $request->session()->flash('success', 'Registration was successful!');
