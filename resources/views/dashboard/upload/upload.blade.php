@@ -4,8 +4,10 @@
 		<div class="container">
 
 			<h2 class="text-center my-5">Lengkapi Persyaratan Anda</h2>
-
-			<div class="col-lg-8 mx-auto my-5">
+            <div class="position-relative">
+                <hr class="m-0 p-0">
+			</div>
+            <div class="col-lg-8 mx-auto my-5">
 
 				@if(count($errors) > 0)
 				<div class="alert alert-danger">

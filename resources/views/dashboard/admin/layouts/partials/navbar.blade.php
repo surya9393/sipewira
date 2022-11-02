@@ -1,42 +1,35 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <img src="{{ asset('assets/img/logo.png') }}" alt="" width="35" class="m-2">
-    <a class="navbar-brand" href="/admin">ADMIN SIPERIWAUSAHA</a>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <input
-                class="form-control"
-                type="text"
-                placeholder="Search for..."
-                aria-label="Search"
-                aria-describedby="basic-addon2"/>
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-    </form>
-    <!-- Navbar-->
-    <ul class="navbar-nav ml-auto ml-md-0">
-        <li class="nav-item dropdown">
-            <a
-                class="nav-link dropdown-toggle"
-                id="userDropdown"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                <i class="fas fa-user fa-fw"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">Activity Log</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
-            </div>
-        </li>
-    </ul>
-</div>
-</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="container">
+        <a class="navbar-brand" href="/admin">
+          <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="30" class="d-inline-block align-text-top">
+          ADMIN SIPEWIRAUSAHA
+        </a>
+      </div>
+      <div class="collapse navbar-collapse justify-content-md-end" id="navbarsExample08">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/verifikasi') }}" tabindex="-1">Verifikasi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/berita" tabindex="-1">Berita</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown08">
+              <li><a class="dropdown-item" href="/admin">Home</a></li>
+              <li><a class="dropdown-item" href="/Verifikasi">Verifikasi</a></li>
+              <hr>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

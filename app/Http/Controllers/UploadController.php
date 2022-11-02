@@ -45,7 +45,7 @@ class UploadController extends Controller
         $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'ktp';
+        $tujuan_upload = 'upload/ktp';
         $file_ktp->move($tujuan_upload,$nama_ktp);
 
         //NPWP
@@ -55,7 +55,7 @@ class UploadController extends Controller
         $nama_npwp = time()."_".$file_npwp->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'npwp';
+        $tujuan_upload = 'upload/npwp';
         $file_npwp->move($tujuan_upload,$nama_npwp);
 
         //SKPNS
@@ -65,7 +65,7 @@ class UploadController extends Controller
         $nama_skpns = time()."_".$file_skpns->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'skpns';
+        $tujuan_upload = 'upload/skpns';
         $file_skpns->move($tujuan_upload,$nama_skpns);
 
         //SKPANGKAT
@@ -75,7 +75,7 @@ class UploadController extends Controller
         $nama_skpangkat = time()."_".$file_skpangkat->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'skpangkat';
+        $tujuan_upload = 'upload/skpangkat';
         $file_skpangkat->move($tujuan_upload,$nama_skpangkat);
 
         //SKIJAZAH
@@ -85,7 +85,7 @@ class UploadController extends Controller
         $nama_skijazah = time()."_".$file_ijazah->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'skijazah';
+        $tujuan_upload = 'upload/skijazah';
         $file_ijazah->move($tujuan_upload,$nama_skijazah);
 
         //SKJABATAN
@@ -95,7 +95,7 @@ class UploadController extends Controller
         $nama_skjabatan = time()."_".$file_jabatan->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'skjabatan';
+        $tujuan_upload = 'upload/skjabatan';
         $file_jabatan->move($tujuan_upload,$nama_skjabatan);
 
         //SKSKSEHAT
@@ -105,7 +105,7 @@ class UploadController extends Controller
         $nama_sksehat = time()."_".$file_sehat->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'sksehat';
+        $tujuan_upload = 'upload/sksehat';
         $file_sehat->move($tujuan_upload,$nama_sksehat);
 
         //SURAT PERNYATAAN
@@ -115,7 +115,7 @@ class UploadController extends Controller
         $nama_suratpernyataan = time()."_".$file_pernyataan->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'suratpernyataan';
+        $tujuan_upload = 'upload/suratpernyataan';
         $file_pernyataan->move($tujuan_upload,$nama_suratpernyataan);
 
         //DISIPLIN
@@ -125,7 +125,7 @@ class UploadController extends Controller
         $nama_disiplin = time()."_".$file_disiplin->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'disiplin';
+        $tujuan_upload = 'upload/disiplin';
         $file_disiplin->move($tujuan_upload,$nama_disiplin);
 
         //BELAJAR
@@ -135,7 +135,7 @@ class UploadController extends Controller
         $nama_belajar = time()."_".$file_belajar->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'belajar';
+        $tujuan_upload = 'upload/belajar';
         $file_belajar->move($tujuan_upload,$nama_belajar);
 
         //CUTI
@@ -145,7 +145,7 @@ class UploadController extends Controller
         $nama_cuti = time()."_".$file_cuti->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'cuti';
+        $tujuan_upload = 'upload/cuti';
         $file_cuti->move($tujuan_upload,$nama_cuti);
 
         //WIRAUSAHA
@@ -155,7 +155,7 @@ class UploadController extends Controller
         $nama_wirausaha = time()."_".$file_wirausaha->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'wirausaha';
+        $tujuan_upload = 'upload/wirausaha';
         $file_wirausaha->move($tujuan_upload,$nama_wirausaha);
 
         //NILAI
@@ -165,7 +165,7 @@ class UploadController extends Controller
         $nama_nilai = time()."_".$file_nilai->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'nilai';
+        $tujuan_upload = 'upload/nilai';
         $file_nilai->move($tujuan_upload,$nama_nilai);
 
         //BIOGRAFI
@@ -175,7 +175,7 @@ class UploadController extends Controller
         $nama_biografi = time()."_".$file_biografi->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'biografi';
+        $tujuan_upload = 'upload/biografi';
         $file_biografi->move($tujuan_upload,$nama_biografi);
 
         //PETA
@@ -185,7 +185,7 @@ class UploadController extends Controller
         $nama_peta = time()."_".$file_peta->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'peta';
+        $tujuan_upload = 'upload/peta';
         $file_peta->move($tujuan_upload,$nama_peta);
         $default_verif ='0';
 
@@ -232,21 +232,21 @@ class UploadController extends Controller
         // hapus file
         $upload = Upload::where('id',$id)->first();
         // File::delete('ktp/'.$upload->file);
-        Storage::disk('local_public')->delete('ktp/'.$upload->ktp);
-        Storage::disk('local_public')->delete('npwp/'.$upload->npwp);
-        Storage::disk('local_public')->delete('skpns/'.$upload->skpns);
-        Storage::disk('local_public')->delete('skpangkat/'.$upload->skpangkat);
-        Storage::disk('local_public')->delete('skijazah/'.$upload->skijazah);
-        Storage::disk('local_public')->delete('skjabatan/'.$upload->skjabatan);
-        Storage::disk('local_public')->delete('sksehat/'.$upload->sksehat);
-        Storage::disk('local_public')->delete('suratpernyataan/'.$upload->suratpernyataan);
-        Storage::disk('local_public')->delete('disiplin/'.$upload->disiplin);
-        Storage::disk('local_public')->delete('belajar/'.$upload->belajar);
-        Storage::disk('local_public')->delete('cuti/'.$upload->cuti);
-        Storage::disk('local_public')->delete('wirausaha/'.$upload->wirausaha);
-        Storage::disk('local_public')->delete('nilai/'.$upload->nilai);
-        Storage::disk('local_public')->delete('biografi/'.$upload->biografi);
-        Storage::disk('local_public')->delete('peta/'.$upload->peta);
+        Storage::disk('local_public')->delete('upload/ktp/'.$upload->ktp);
+        Storage::disk('local_public')->delete('upload/npwp/'.$upload->npwp);
+        Storage::disk('local_public')->delete('upload/skpns/'.$upload->skpns);
+        Storage::disk('local_public')->delete('upload/skpangkat/'.$upload->skpangkat);
+        Storage::disk('local_public')->delete('upload/skijazah/'.$upload->skijazah);
+        Storage::disk('local_public')->delete('upload/skjabatan/'.$upload->skjabatan);
+        Storage::disk('local_public')->delete('upload/sksehat/'.$upload->sksehat);
+        Storage::disk('local_public')->delete('upload/suratpernyataan/'.$upload->suratpernyataan);
+        Storage::disk('local_public')->delete('upload/disiplin/'.$upload->disiplin);
+        Storage::disk('local_public')->delete('upload/belajar/'.$upload->belajar);
+        Storage::disk('local_public')->delete('upload/cuti/'.$upload->cuti);
+        Storage::disk('local_public')->delete('upload/wirausaha/'.$upload->wirausaha);
+        Storage::disk('local_public')->delete('upload/nilai/'.$upload->nilai);
+        Storage::disk('local_public')->delete('upload/biografi/'.$upload->biografi);
+        Storage::disk('local_public')->delete('upload/peta/'.$upload->peta);
         // hapus data
         Upload::where('id',$id)->delete();
 

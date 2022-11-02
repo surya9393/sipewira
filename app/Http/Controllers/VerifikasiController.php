@@ -16,7 +16,9 @@ class VerifikasiController extends Controller
      */
     public function index()
     {
-        $daftar = User::where('level', '2')->get();
+        $daftar = User::where('level', '2')
+                        ->orWhere('level', '3')
+                        ->get();
         return view('dashboard.admin.aksi.verifikasi',[
             'pendaftar'=>$daftar,
         ]);
@@ -57,6 +59,7 @@ class VerifikasiController extends Controller
         return view('dashboard.admin.aksi.seleksi',[
             'upload'=>$upload,
             'verif'=>$verif,
+            'uploaded'=>Upload::where('user_id', $id)->get(),
             'author'=>$author
         ]);
     }

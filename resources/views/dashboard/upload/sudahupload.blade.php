@@ -20,9 +20,14 @@
         <div class="form-group">
             @foreach ($uploaded as $getdata)
         <tbody>
+            {{-- ktp --}}
             <tr>
-                <td>1</td>
-                <td>Kartu Tanda Penduduk</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">1</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Kartu Tanda Penduduk:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->ktp))
                     <input id="ktp" type="file" name="ktp">
@@ -54,7 +59,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/ktp/{{ $getdata->ktp }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/ktp/{{ $getdata->ktp }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -75,7 +80,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                        <iframe src="/ktp/{{ $getdata->ktp }}" frameborder="0" width="200" height="200"></iframe>
+                                        <iframe src="/upload/ktp/{{ $getdata->ktp }}" frameborder="0" width="200" height="200"></iframe>
                                         <form action="/update/ktp" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
@@ -89,13 +94,19 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/delete {{ $getdata->user_id }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
+                        <a href="/delete/upload {{ $getdata->user_id }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- npwp --}}
             <tr>
-                <td>2</td>
-                <td>Nomor Pokok Wajib Pajak</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">2</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Nomor Pokok Wajib Pajak:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->npwp))
                     <input id="ktp" type="file" name="ktp">
@@ -127,7 +138,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/npwp/{{ $getdata->npwp }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/npwp/{{ $getdata->npwp }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -135,14 +146,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editnpwp">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editnpwp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT NPWP</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/npwp/{{ $getdata->npwp }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/npwp" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="ktp" type="file" name="npwp">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- skpns --}}
             <tr>
-                <td>3</td>
-                <td>Surat Keterangan Pegawai Negeri Sipil</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">3</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Surat Keterangan Pegawai Negeri Sipil:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->skpns))
                     <input id="ktp" type="file" name="ktp">
@@ -174,7 +217,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/skpns/{{ $getdata->skpns }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/skpns/{{ $getdata->skpns }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -182,14 +225,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editskpns">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editskpns" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SKPNS</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/skpns/{{ $getdata->skpns }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/skpns" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="skpns">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- skpangkat --}}
             <tr>
-                <td>4</td>
-                <td>Surat Keterangan Pangkat</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">4</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Surat Keterangan Pangkat:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->skpangkat))
                     <input id="ktp" type="file" name="ktp">
@@ -221,7 +296,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/skpangkat/{{ $getdata->skpangkat }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/skpangkat/{{ $getdata->skpangkat }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -229,14 +304,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editskpangkat">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editskpangkat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK PANGKAT</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/skpangkat/{{ $getdata->skpangkat }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/skpangkat" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="skpangkat">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- skijazah --}}
             <tr>
-                <td>5</td>
-                <td>Surat Keterangan Ijazah</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">5</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Surat Keterangan Ijazah:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->skijazah))
                     <input id="ktp" type="file" name="ktp">
@@ -268,7 +375,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/skijazah/{{ $getdata->skijazah }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/skijazah/{{ $getdata->skijazah }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -276,14 +383,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editskijazah">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editskijazah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK IJAZAH</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/skijazah/{{ $getdata->skijazah }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/skijazah" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="skijazah">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- skjabatan --}}
             <tr>
-                <td>6</td>
-                <td>Surat Keterangan Jabatan</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">6</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Surat Keterangan Jabatan:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->skjabatan))
                     <input id="ktp" type="file" name="ktp">
@@ -315,7 +454,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/skjabatan/{{ $getdata->skjabatan }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/skjabatan/{{ $getdata->skjabatan }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -323,14 +462,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editskjabatan">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editskjabatan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/skjabatan/{{ $getdata->skjabatan }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/skjabatan" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="skjabatan">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- sksehatdokter --}}
             <tr>
-                <td>7</td>
-                <td>Surat Keterangan Sehat dari Dokter</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">7</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Surat Keterangan Sehat dari Dokter:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->sksehat))
                     <input id="ktp" type="file" name="ktp">
@@ -346,7 +517,7 @@
                     @endif
                 </td>
                 <td class="text-center">
-                    @if (empty($getdata->skpns))
+                    @if (empty($getdata->sksehat))
                     <p>Data Tidak Ada</p>
                     @else
                         <span data-bs-toggle="modal" data-bs-target="#staticBackdrop6">
@@ -358,11 +529,11 @@
                             <div class="modal-dialog modal-dialog-scrollable modal-xl">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Surat Keterangan PNS</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Surat Keterangan Sehat Dokter</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/sksehat/{{ $getdata->sksehat }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/sksehat/{{ $getdata->sksehat }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -370,14 +541,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editsksehat">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editsksehat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/sksehat/{{ $getdata->sksehat }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/sksehat" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="sksehat">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- suratpernyataan --}}
             <tr>
-                <td>8</td>
-                <td>Surat Pernyataan</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">8</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Surat Pernyataan Bersedia:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->suratpernyataan))
                     <input id="ktp" type="file" name="ktp">
@@ -409,7 +612,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/suratpernyataan/{{ $getdata->suratpernyataan }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/suratpernyataan/{{ $getdata->suratpernyataan }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -417,14 +620,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editsuratpernyataan">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editsuratpernyataan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/sksuratpernyataan/{{ $getdata->skjabatan }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/suratpernyataan" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="suratpernyataan">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- Surat --}}
+            {{-- surat disiplin --}}
             <tr>
-                <td></td>
-                <td>9.A Surat Disiplin</td>
+                <td>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">9.A Surat Disiplin</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->disiplin))
                     <input id="ktp" type="file" name="ktp">
@@ -456,7 +691,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/disiplin/{{ $getdata->disiplin }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/disiplin/{{ $getdata->disiplin }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -464,14 +699,45 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editdisiplin">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editdisiplin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/disiplin{{ $getdata->skjabatan }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/disiplin" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="disiplin">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- surat belajar --}}
             <tr>
-                <td></td>
-                <td>9.B Surat Belajar</td>
+                <td>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">9.B Surat Belajar</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->belajar))
                     <input id="ktp" type="file" name="ktp">
@@ -503,7 +769,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/belajar/{{ $getdata->belajar }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/belajar/{{ $getdata->belajar }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -511,14 +777,45 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editbelajar">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editbelajar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/belajar/{{ $getdata->belajar }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/belajar" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="belajar">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- surat cuti --}}
             <tr>
-                <td></td>
-                <td>9.C Surat Cuti</td>
+                <td>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">9.C Surat Cuti</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->cuti))
                     <input id="ktp" type="file" name="ktp">
@@ -550,7 +847,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/cuti/{{ $getdata->cuti }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/cuti/{{ $getdata->cuti }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -558,14 +855,44 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editcuti">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editcuti" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/cuti/{{ $getdata->cuti }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/cuti" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="cuti">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+            {{-- surat kewirausahaan --}}
             <tr>
-                <td></td>
-                <td>9.D Surat Kewirausahaan</td>
+                <td>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">9.D Surat Kewirausahaan</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->wirausaha))
                     <input id="ktp" type="file" name="ktp">
@@ -597,7 +924,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/wirausaha/{{ $getdata->wirausaha }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/wirausaha/{{ $getdata->wirausaha }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -605,14 +932,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editwirausaha">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editwirausaha" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/wirausaha/{{ $getdata->wirausaha }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/wirausaha" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="skpns">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- surat nilai --}}
             <tr>
-                <td>10</td>
-                <td>Surat Keterangan Nilai Prestasi</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">10</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Surat Nilai Prestasi:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->nilai))
                     <input id="ktp" type="file" name="ktp">
@@ -644,7 +1003,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/nilai/{{ $getdata->nilai }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/nilai/{{ $getdata->nilai }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -652,14 +1011,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editnilai">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editnilai" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/nilai/{{ $getdata->nilai }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/nilai" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="nilai">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- biografi --}}
             <tr>
-                <td>11</td>
-                <td>Biografi/Data Diri</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">11</b>
+                </td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-2 translate-middle-y">Daftar Biodata Diri:</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->biografi))
                     <input id="ktp" type="file" name="ktp">
@@ -691,7 +1082,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/biografi/{{ $getdata->biografi }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/biografi/{{ $getdata->biografi }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -699,14 +1090,46 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editbiografi">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editbiografi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/biografi/{{ $getdata->biografi }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/biografi" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="biografi">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
+            {{-- pemetaan --}}
             <tr>
-                <td>12</td>
-                <td>Surat Keterangan Pemetaan</td>
+                <td class="position-relative">
+                    <b class="position-absolute top-50 start-50 translate-middle">12</b>
+                </td>
+                <td class="position-relative">
+                    <b class="top-50">Surat Keterangan Pemetaan</b>
+                </td>
                 <td class="text-center">
                     @if (empty($getdata->peta))
                     <input id="ktp" type="file" name="ktp">
@@ -738,7 +1161,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="/peta/{{ $getdata->peta }}" frameborder="0" width="800" height="600"></iframe>
+                                    <iframe src="/upload/peta/{{ $getdata->peta }}" frameborder="0" width="800" height="600"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -746,11 +1169,38 @@
                             </div>
                             </div>
                         </div>
-                        <a href="/edit/upload" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square text-light"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#editpeta">
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                        </span>
+                        <div class="modal fade"  id="editpeta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">EDIT SK JABATAN</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <iframe src="/upload/peta/{{ $getdata->peta }}" frameborder="0" width="200" height="200"></iframe>
+                                        <form action="/update/peta" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value=" {{auth()->user()->id}} ">
+                                            <input id="skpns" type="file" name="skpns">
+                                            <input type="submit" name="submit" id="" value="Update" class="btn btn-success">
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         <a href="/delete" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"><i class="bi bi-trash"></i></a>
                         @endif
                 </td>
             </tr>
+
         </tbody>
             @endforeach
         </div>

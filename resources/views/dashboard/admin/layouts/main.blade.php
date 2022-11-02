@@ -22,10 +22,9 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
             crossorigin="anonymous"></script>
     </head>
-    <body class="sb-nav-fixed">
+    <body>
         @include('dashboard.admin.layouts.partials.navbar')
             @yield('content')
-        @include('dashboard.admin.layouts.partials.footer')
         </div>
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"

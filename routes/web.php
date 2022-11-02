@@ -44,9 +44,44 @@ Route::group(['middleware'=>['auth']], function(){
         Route::resource('dashboard',PenggunaController::class);
     });
 });
+Route::controller(PenggunaController::class)->group(function(){
+    Route::post('/update/ktp',[PenggunaController::class,'updatektp'])->middleware('auth');
+    Route::post('/update/npwp',[PenggunaController::class,'updatenpwp'])->middleware('auth');
+    Route::post('/update/skpns',[PenggunaController::class,'updateskpns'])->middleware('auth');
+    Route::post('/update/skpangkat',[PenggunaController::class,'updateskpangkat'])->middleware('auth');
+    Route::post('/update/skijazah',[PenggunaController::class,'updateskijazah'])->middleware('auth');
+    Route::post('/update/skjabatan',[PenggunaController::class,'updateskjabatan'])->middleware('auth');
+    Route::post('/update/sksehat',[PenggunaController::class,'updatesksehat'])->middleware('auth');
+    Route::post('/update/suratpernyataan',[PenggunaController::class,'updatesuratpernyataan'])->middleware('auth');
+    Route::post('/update/disiplin',[PenggunaController::class,'updatedisiplin'])->middleware('auth');
+    Route::post('/update/belajar',[PenggunaController::class,'updatebelajar'])->middleware('auth');
+    Route::post('/update/cuti',[PenggunaController::class,'updatecuti'])->middleware('auth');
+    Route::post('/update/wirausaha',[PenggunaController::class,'updatewirausaha'])->middleware('auth');
+    Route::post('/update/nilai',[PenggunaController::class,'updatenilai'])->middleware('auth');
+    Route::post('/update/biografi',[PenggunaController::class,'updatebiografi'])->middleware('auth');
+    Route::post('/update/peta',[PenggunaController::class,'updatepeta'])->middleware('auth');
+});
+
+Route::controller(PenggunaController::class)->group(function(){
+    Route::post('/delete/ktp',[PenggunaController::class,'deletektp'])->middleware('auth');
+    Route::post('/delete/npwp',[PenggunaController::class,'deletenpwp'])->middleware('auth');
+    Route::post('/delete/skpns',[PenggunaController::class,'deleteskpns'])->middleware('auth');
+    Route::post('/delete/skpangkat',[PenggunaController::class,'deleteskpangkat'])->middleware('auth');
+    Route::post('/delete/skijazah',[PenggunaController::class,'deleteskijazah'])->middleware('auth');
+    Route::post('/delete/skjabatan',[PenggunaController::class,'deleteskjabatan'])->middleware('auth');
+    Route::post('/delete/sksehat',[PenggunaController::class,'deletesksehat'])->middleware('auth');
+    Route::post('/delete/suratpernyataan',[PenggunaController::class,'deletesuratpernyataan'])->middleware('auth');
+    Route::post('/delete/disiplin',[PenggunaController::class,'deletedisiplin'])->middleware('auth');
+    Route::post('/delete/belajar',[PenggunaController::class,'deletebelajar'])->middleware('auth');
+    Route::post('/delete/cuti',[PenggunaController::class,'deletecuti'])->middleware('auth');
+    Route::post('/delete/wirausaha',[PenggunaController::class,'deletewirausaha'])->middleware('auth');
+    Route::post('/delete/nilai',[PenggunaController::class,'deletenilai'])->middleware('auth');
+    Route::post('/delete/biografi',[PenggunaController::class,'deletebiografi'])->middleware('auth');
+    Route::post('/delete/peta',[PenggunaController::class,'deletepeta'])->middleware('auth');
+});
+
 //edit pengguna
 Route::get('/edit/{id}',[PenggunaController::class,'edit'])->middleware('auth');
-Route::post('/update/ktp',[PenggunaController::class,'updatektp'])->middleware('auth');
 //Lihat Pendaftar
 Route::get('/pendaftar', [PendaftarController::class,'index'])->middleware('auth');
 //Verifikasi

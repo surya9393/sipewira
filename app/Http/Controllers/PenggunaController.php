@@ -9,7 +9,8 @@ use App\Models\VerifUpload;
 use Illuminate\Support\Facades\Storage;
 class PenggunaController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('dashboard.index',[
             'title'=>'Dashboard'
         ]);
@@ -36,12 +37,12 @@ public function updatektp(Request $request)
     //get All Data
     $upload = Upload::where('user_id',$request->id)->first();
     //Delet File
-    Storage::disk('local_public')->delete('ktp/'.$upload->ktp);
     // update data pegawai
     $this->validate($request, [
         'id'=> 'required',
         'ktp' => 'required|mimes:pdf',
     ]);
+    Storage::disk('local_public')->delete('/upload/ktp/'.$upload->ktp);
       //KTP
         // menyimpan data file yang diupload ke variabel $file
         $file_ktp = $request->file('ktp');
@@ -49,7 +50,7 @@ public function updatektp(Request $request)
         $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'ktp';
+        $tujuan_upload = 'upload/ktp';
         $file_ktp->move($tujuan_upload,$nama_ktp);
     //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
@@ -63,20 +64,20 @@ public function updatenpwp(Request $request)
 	//get All Data
     $upload = Upload::where('user_id',$request->id)->first();
     //Delet File
-    Storage::disk('local_public')->delete('npwp/'.$upload->ktp);
     // update data pegawai
     $this->validate($request, [
         'id'=> 'required',
         'npwp' => 'required|mimes:pdf',
     ]);
-      //KTP
+    Storage::disk('local_public')->delete('upload/npwp/'.$upload->npwp);
+      //NPWP
         // menyimpan data file yang diupload ke variabel $file
         $file_ktp = $request->file('npwp');
 
         $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
 
               // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'npwp';
+        $tujuan_upload = 'upload/npwp';
         $file_ktp->move($tujuan_upload,$nama_ktp);
     //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
@@ -87,120 +88,356 @@ public function updatenpwp(Request $request)
 }
 public function updateskpns(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'skpns' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/skpns/'.$upload->skpns);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('skpns');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/skpns';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'skpns' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/dashboard/upload')->with('successupload', 'Upload Berhasil');
+	return redirect('/dashboard/upload')->with('successupload', 'SKPNS Berhasil di Update');
 }
 public function updateskpangkat(Request $request)
 {
-	// update data pegawai
-	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
-	]);
-	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+    //get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'skpangkat' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/skpangkat/'.$upload->skpangkat);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('skpangkat');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+            // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/skpangkat';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
+    DB::table('uploads')->where('user_id',$request->id)->update([
+        'skpangkat' => $nama_ktp,
+    ]);
+    // alihkan halaman ke halaman pegawai
+    return redirect('/dashboard/upload')->with('successupload', 'SK Pangkat Berhasil di Update');
 }
 public function updateskijazah(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'skijazah' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/skijazah/'.$upload->skijazah);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('skijazah');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/skijazah';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'skijazah' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'SK Ijazah Berhasil di Update');
 }
 public function updateskjabatan(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'skjabatan' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/skjabatan/'.$upload->skjabatan);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('skjabatan');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/skjabatan';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'skjabatan' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'SK Jabatan Berhasil di Update');
 }
 public function updatesksehat(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'sksehat' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/sksehat/'.$upload->sksehat);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('sksehat');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/sksehat';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'sksehat' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'SK Ijazah Berhasil di Update');
 }
 public function updatesuratpernyataan(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'suratpernyataan' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/suratpernyataan/'.$upload->sksehat);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('suratpernyataan');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/suratpernyataan';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'suratpernyataan' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'Surat Pernyataan Berhasil di Update');
 }
 public function updatedisiplin(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'disiplin' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/disiplin/'.$upload->sksehat);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('disiplin');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/disiplin';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'disiplin' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'Surat Disiplin Berhasil di Update');
 }
 public function updatebelajar(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'belajar' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/belajar/'.$upload->sksehat);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('belajar');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/belajar';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'belajar' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'Surat Keterangan Belajar Berhasil di Update');
 }
 public function updatecuti(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'cuti' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/cuti/'.$upload->sksehat);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('cuti');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/cuti';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'cuti' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'Surat Pernyataan Berhasil di Update');
 }
 public function updatewirausaha(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'wirausaha' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/wirausaha/'.$upload->sksehat);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('wirausaha');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/wirausaha';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'wirausaha' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'Surat Wirausaha Berhasil di Update');
 }
 public function updatenilai(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'nilai' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/nilai/'.$upload->nilai);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('nilai');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/nilai';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'nilai' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'Surat Penilaian Berhasil di Update');
 }
 public function updatebiografi(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'biografi' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/biografi/'.$upload->biografi);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('biografi');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/biografi';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'biografi' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'Surat Wirausaha Berhasil di Update');
 }
 public function updatepeta(Request $request)
 {
-	// update data pegawai
+	//get All Data
+    $upload = Upload::where('user_id',$request->id)->first();
+    //Delet File
+    // update data pegawai
+    $this->validate($request, [
+        'id'=> 'required',
+        'peta' => 'required|mimes:pdf',
+    ]);
+    Storage::disk('local_public')->delete('/upload/peta/'.$upload->peta);
+    //NPWP
+        // menyimpan data file yang diupload ke variabel $file
+        $file_ktp = $request->file('peta');
+
+        $nama_ktp = time()."_".$file_ktp->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'upload/peta';
+        $file_ktp->move($tujuan_upload,$nama_ktp);
+    //Update Database
 	DB::table('uploads')->where('user_id',$request->id)->update([
-		'ktp' => $request->ktp,
+		'peta' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/peengguna');
+	return redirect('/dashboard/upload')->with('successupload', 'Surat Wirausaha Berhasil di Update');
 }
 
+
+// Delete
 }

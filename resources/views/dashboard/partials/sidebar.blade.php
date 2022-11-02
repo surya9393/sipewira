@@ -17,23 +17,23 @@
                     </a>
                 </li>
                 </ul>
-
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-                    <i class="bi bi-newspaper"></i>
-                    <span>Berita</span>
-                <a class="link-secondary {{ Request::is('dashboard/jadwal') ? 'active' : ''}}" href="#" aria-label="Add a new report">
-                </a>
-                </h6>
                 <ul class="nav flex-column mb-2">
-                <li class="nav-item">
+                <hr>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">
+                        <i class="bi bi-newspaper"></i>
+                        Berita
+                        </a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link {{ Request::is('dashboard/pengumuman') ? 'active' : ''}}" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
+                    <i class="bi bi-card-list"></i>
                     Pengumuman
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
+                    <i class="bi bi-info-circle-fill"></i>
                     Informasi
                     </a>
                 </li>
