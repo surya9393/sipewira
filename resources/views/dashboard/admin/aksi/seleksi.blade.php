@@ -49,10 +49,60 @@
                                 </tr>
                               </table>
                           <p class="card-text"></p>
-                          <div class="text-center">
-                            <a href="/hasil" class="btn btn-primary">Seleksi</a>
-                            <a href="/update/" class="btn btn-warning">Edit Profile</a>
-                          </div>
+                          <!-- Button trigger modal -->
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Seleksi</button>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Edit Profil</button>
+                        </div>                    
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Seleksi</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="/seleksi" method="POST">
+                                    @csrf
+                                    <input type="text" name="id" value="{{ $user->id }}">
+                                    <input type="text" class="form-control mb-3" name="nama" value="{{ $user->name }}">
+                                    <div class="input-group mb-3">
+                                        <select class="form-select" name="seleksi" required>
+                                          <option selected value="">Hasil Seleksi</option>
+                                          <option value="1">Lolos</option>
+                                          <option value="0">Gagal</option>
+                                        </select>
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-success">Update</button>
+                                    </div>
+                                </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static1" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Profil</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                                </div>
+                                <div class="modal-body">
+                                ...
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Understood</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                           @endforeach
                         </div>
                       </div>
@@ -69,5 +119,9 @@
     </div>
     <script>const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    </script>
+    <script>
+       
+  
     </script>
 @endsection

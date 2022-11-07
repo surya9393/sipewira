@@ -187,6 +187,6 @@ class ProfileController extends Controller
             'level' => '3',
             'email' => $request->email
         ]);
-        return redirect('/dashboard')->with('success', 'Registration was successful!');
+        return redirect('/dashboard')->with('success', 'Seleksi was successful!');
     }
 }

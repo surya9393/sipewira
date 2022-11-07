@@ -17,7 +17,7 @@
                         <i class="bi bi-person-circle"> </i>&nbsp; {{ auth()->user()->name }}</a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="{{ url('/profile') }}"><i class="bi bi-person-circle"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/pengguna') }}"><i class="bi bi-person-circle"></i> Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{{ url('logout') }}" method="get" id="myForm">

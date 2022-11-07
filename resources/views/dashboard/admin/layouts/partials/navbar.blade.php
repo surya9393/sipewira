@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Tenth navbar example">
-    <div class="container-fluid">
+    <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,7 +20,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/berita" tabindex="-1">Berita</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown08">
               <li><a class="dropdown-item" href="/admin">Home</a></li>

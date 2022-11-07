@@ -440,4 +440,12 @@ public function updatepeta(Request $request)
 
 
 // Delete
+
+
+public function profile()
+    {
+        return view('dashboard.profile',[
+            'title'=>'Dashboard'
+        ]);
+    }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('nip')->unique();
-            $table->string('photo')->default('/users/images/default.png');
+            $table->string('photo')->default('/upload/users/default.png');
             $table->string('phone');
             $table->string('gender')->nullable();
             $table->string('unit_kerja')->nullable();
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('hasil')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

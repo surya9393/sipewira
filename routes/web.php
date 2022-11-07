@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\SeleksiController;
 use App\Http\Controllers\VerifikasiController;
 
 
@@ -80,12 +81,14 @@ Route::controller(PenggunaController::class)->group(function(){
     Route::post('/delete/peta',[PenggunaController::class,'deletepeta'])->middleware('auth');
 });
 
+Route::get('/pengguna', [PenggunaController::class,'profile'])->middleware('auth');
 //edit pengguna
 Route::get('/edit/{id}',[PenggunaController::class,'edit'])->middleware('auth');
 //Lihat Pendaftar
 Route::get('/pendaftar', [PendaftarController::class,'index'])->middleware('auth');
 //Verifikasi
 Route::resource('/verifikasi', VerifikasiController::class)->middleware('auth');
+Route::post('/seleksi', [SeleksiController::class, 'update'])->middleware('auth');
 
 Route::get('/usulan', function(){
     return view('usulan');

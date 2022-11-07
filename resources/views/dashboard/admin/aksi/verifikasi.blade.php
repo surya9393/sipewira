@@ -1,5 +1,11 @@
 @extends('dashboard.admin.layouts.main')
 @section('content')
+@if (session()->has('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
     <div class="row mt-5">
         <div class="container">
             <h1 class="text-center">Pendaftar SIPEWIRAUSAHA</h1>

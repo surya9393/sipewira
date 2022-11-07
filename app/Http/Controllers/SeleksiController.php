@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSeleksiRequest;
-use App\Http\Requests\UpdateSeleksiRequest;
 use App\Models\Seleksi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SeleksiController extends Controller
 {
@@ -68,9 +69,16 @@ class SeleksiController extends Controller
      * @param  \App\Models\Seleksi  $seleksi
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSeleksiRequest $request, Seleksi $seleksi)
+    public function update(Request $request)
     {
-        //
+        $validate_data = $request->validate([
+            'seleksi'=>'required',
+        ]);
+
+        DB::table('users')->where('id',$request->id)->update([
+            'hasil'=>$request->seleksi
+        ]);
+        return redirect('/verifikasi')->with('success', 'Seleksi Telah Berhasil!');
     }
 
     /**
