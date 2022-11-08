@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SeleksiController;
 use App\Http\Controllers\VerifikasiController;
 
@@ -89,37 +90,8 @@ Route::get('/pendaftar', [PendaftarController::class,'index'])->middleware('auth
 //Verifikasi
 Route::resource('/verifikasi', VerifikasiController::class)->middleware('auth');
 Route::post('/seleksi', [SeleksiController::class, 'update'])->middleware('auth');
-
-Route::get('/usulan', function(){
-    return view('usulan');
-})->name('syarat');
-Route::get('/uji-kompetensi', function(){
-    return view('uji');
-})->name('uji');
-// Route::get('/verifikasi', [VerifikasiController::class,'index'])->middleware('auth');
-// Route::get('/verifikasi/pendaftar/{$id}', [VerifikasiController::class,'show'])->middleware('auth');
-// Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');
-// Route::post('/login', [LoginController::class, 'authenticate']);
-// Route::post('/logout', [LoginController::class, 'logout']);
-
-// Dashboard Pengguna
-// Route::get('/dashboard', function(){
-//     return view('dashboard.index',[
-//         'title'=>'Dashboard'
-//     ]);
-// })->middleware('auth');
-
-
-// Route::resource('/dashboard/posts', DashboardController::class)->middleware('auth');
-
-
-//web lama
-// Route::get('/blog', [PostController::class, 'index']);
-
-// //Single Post
-// Route::get('posts/{post:slug}', [PostController::class, 'show']);
-
-// Route::get('/categories', [CategoryController::class, 'show']);
+//berita
+Route::post('/admin/prosesberita', [AdminController::class, 'store'])->name('admin.berita');
 
 Route::get('/dashboard/upload', [UploadController::class, 'upload'])->middleware('auth');
 Route::post('/dashboard/upload/proses', [UploadController::class, 'proses_upload'])->middleware('auth');
