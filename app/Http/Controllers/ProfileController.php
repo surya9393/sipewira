@@ -21,7 +21,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = User::findOrFail(Auth::id());
-        return view('dashboard.auth.profile',[
+        return view('dashboard.user.auth.profile',[
             'user'=>$user,
             'title'=>'Profile'
         ]);
@@ -57,7 +57,7 @@ class ProfileController extends Controller
     public function show()
     {
         $user = User::findOrFail(Auth::id());
-        return view('dashboard.auth.profile',[
+        return view('dashboard.user.auth.profile',[
             'user'=>$user,
             'title'=>'Profile'
         ]);
@@ -71,7 +71,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        return view('dashboard.auth.update_profile', [
+        return view('dashboard.user.auth.update_profile', [
             'user' => $request->user()
         ]);
     }
@@ -139,7 +139,7 @@ class ProfileController extends Controller
     }
     public function crop()
     {
-      return view('dashboard.auth.editdp');
+      return view('dashboard.user.auth.editdp');
     }
     public function crop_proses(Request $request)
     {
@@ -170,14 +170,15 @@ class ProfileController extends Controller
     {
         $validated_data = $request->validate([
             'name'=>'required|max:255',
-            'nip'=>['required', 'min:6', 'max:12'],
+            'nip'=>['required'],
             'phone'=>'required',
             'gender'=>'required',
             'unit_kerja'=>'required',
             'instansi'=>'required',
             'email'=>['required','email:dns'],
         ]);
-        DB::table('users')->where('id',auth()->user()->id)->update([
+
+        DB::table('users')->where('id', auth()->user()->id)->update([
             'name' => $request->name,
             'nip' => $request->nip,
             'phone' => $request->phone,
@@ -188,5 +189,29 @@ class ProfileController extends Controller
             'email' => $request->email
         ]);
         return redirect('/dashboard')->with('success', 'Seleksi was successful!');
+    }
+    public function update_data_admin(Request $request)
+    {
+        $validated_data = $request->validate([
+            'name'=>'required|max:255',
+            'nip'=>['required'],
+            'phone'=>'required',
+            'gender'=>'required',
+            'unit_kerja'=>'required',
+            'instansi'=>'required',
+            'email'=>['required','email:dns'],
+        ]);
+
+        DB::table('users')->where('id', $request->uid)->update([
+            'name' => $request->name,
+            'nip' => $request->nip,
+            'phone' => $request->phone,
+            'gender'=> $request->gender,
+            'unit_kerja' => $request->unit_kerja,
+            'instansi'=> $request->instansi,
+            'level' => '3',
+            'email' => $request->email
+        ]);
+        return redirect('/admin')->with('success', 'Seleksi was successful!');
     }
 }

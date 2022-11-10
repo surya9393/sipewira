@@ -18,25 +18,19 @@
                 </li>
                 </ul>
                 <ul class="nav flex-column mb-2">
-                <hr>
+                    <hr>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">
+                        <a class="nav-link {{ Request::is('dashboard/informasi') ? 'active' : ''}}" aria-current="page" href="#">
                         <i class="bi bi-newspaper"></i>
-                        Berita
+                        Informasi
                         </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link {{ Request::is('dashboard/pengumuman') ? 'active' : ''}}" href="#">
-                    <i class="bi bi-card-list"></i>
-                    Pengumuman
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                    <i class="bi bi-info-circle-fill"></i>
-                    Informasi
-                    </a>
-                </li>
+                        <a class="nav-link {{ Request::is('dashboard/pengumuman') ? 'active' : ''}}" href="#">
+                        <i class="bi bi-card-list"></i>
+                        Pengumuman
+                        </a>
+                    </li>
                 </ul>
             </div>
             </nav>

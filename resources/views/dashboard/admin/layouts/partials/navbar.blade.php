@@ -18,7 +18,7 @@
             <a class="nav-link" href="{{ url('/verifikasi') }}" tabindex="-1">Verifikasi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/berita" tabindex="-1">Berita</a>
+            <a class="nav-link" href="/admin/berita" tabindex="-1">Berita</a>
           </li>
           <li class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>

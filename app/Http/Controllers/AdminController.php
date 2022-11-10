@@ -40,7 +40,6 @@ class AdminController extends Controller
                             ->where('gender', 'Perempuan')
                             ->get();
     //Berita
-        $berita = Post::get();
     //Total Pendaftar
         return view('dashboard.admin.index',[
             'title'=>'Dashboard',

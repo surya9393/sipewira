@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('photo')->nullable();
             $table->text('body');
             $table->string('level')->default('1');
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

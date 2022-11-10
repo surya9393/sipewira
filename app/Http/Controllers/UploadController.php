@@ -12,7 +12,7 @@ class UploadController extends Controller
 	public function upload(){
         // $uploaded = Upload::firstWhere('user_id', request(auth()->user()->id));
         $verif = VerifUpload::where('upload_id',auth()->user()->id)->get()->first();
-		return view('dashboard.upload.upload',[
+		return view('dashboard.user.upload.upload',[
             'upload'=>Upload::get(),
             'verif'=>$verif,
             'uploaded'=>Upload::where('user_id', auth()->user()->id)->get(),

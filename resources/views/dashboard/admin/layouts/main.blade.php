@@ -19,8 +19,12 @@
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
             crossorigin="anonymous"></script>
+            <SCRIPT type="text/javascript">
+                window.history.forward();
+                function noBack() { window.history.forward(); }
+            </SCRIPT>
     </head>
-    <body>
+    <body onload="noBack();"onpageshow="if (event.persisted) noBack();" onunload="">
         @include('dashboard.admin.layouts.partials.navbar')
             @yield('content')
         </div>

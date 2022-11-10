@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Upload;
@@ -11,14 +12,15 @@ class PenggunaController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index',[
-            'title'=>'Dashboard'
+        return view('dashboard.user.index',[
+            'title'=>'Dashboard',
+            "posts" => Post::latest()->paginate(3)->withQueryString()
         ]);
     }
     public function show()
     {
         $verif = VerifUpload::where('upload_id',auth()->user()->id)->get()->first();
-		return view('dashboard.upload.upload',[
+		return view('dashboard.user.upload.upload',[
             'upload'=>Upload::get(),
             'verif'=>$verif,
             'uploaded'=>Upload::where('user_id', auth()->user()->id)->get(),
@@ -444,8 +446,9 @@ public function updatepeta(Request $request)
 
 public function profile()
     {
-        return view('dashboard.profile',[
-            'title'=>'Dashboard'
+
+        return view('dashboard.user.profile',[
+            'title'=>'Dashboard',
         ]);
     }
 }

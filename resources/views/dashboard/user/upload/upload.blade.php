@@ -22,9 +22,9 @@
                         Data Sudah Ada Silahkan tunggu proses Verifikasi
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                        @include('dashboard.upload.sudahupload')
+                        @include('dashboard.user.upload.sudahupload')
                     @empty
-                        @include('dashboard.upload.belumupload')
+                        @include('dashboard.user.upload.belumupload')
                     @endforelse
                 </div>
 			</div>

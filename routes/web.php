@@ -31,7 +31,7 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
 // Login
 Route::controller(LoginController::class)->group(function(){
-    Route::get('login','index')->name('login');
+    Route::get('login','index')->name('login')->middleware('guest');
     Route::post('login/proses','proses')->name('login.proses');
     Route::get('logout','logout');
 });
@@ -82,6 +82,8 @@ Route::controller(PenggunaController::class)->group(function(){
     Route::post('/delete/peta',[PenggunaController::class,'deletepeta'])->middleware('auth');
 });
 
+Route::get('/informasi', [InformasiController::class, 'index'])->middleware('auth');
+Route::get('/pengumuman', [PengumumanController::class, 'index'])->middleware('auth');
 Route::get('/pengguna', [PenggunaController::class,'profile'])->middleware('auth');
 //edit pengguna
 Route::get('/edit/{id}',[PenggunaController::class,'edit'])->middleware('auth');
