@@ -2,15 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeleksiController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\PendaftarController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\SeleksiController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\VerifikasiController;
 
 
@@ -104,3 +106,4 @@ Route::get('crop-image',[ProfileController::class,'crop'])->name('update.photo')
 Route::post('crop-image-upload', [ProfileController::class,'crop_proses']);
 
 Route::post('update-biodata',[ProfileController::class,'update_data'])->name('update.biodata');
+Route::post('update-biodata-admin',[ProfileController::class,'update_data_admin'])->name('update.biodata.admin');

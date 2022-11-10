@@ -7,7 +7,7 @@
             <div class="card-body">
                 <div class="text-center">
                     <figure class="figure">
-                      <img src="/upload/{{ auth()->user()->photo }}" class="figure-img img-fluid rounded" width="110" alt="{{ auth()->user()->name }}">
+                      <img src="{{ auth()->user()->photo }}" class="figure-img img-fluid rounded" width="110" alt="{{ auth()->user()->name }}">
                       <figcaption class="figure-caption text-right">
                         {{ auth()->user()->name }}
                       </figcaption>

@@ -12,7 +12,7 @@
                             <div class="text-center">
                                 @foreach ($author as $user)
                                 <figure class="figure">
-                                    <img src="/upload/{{ $user->photo }}" class="figure-img img-fluid rounded" width="110" alt="{{ $user->name }}">
+                                    <img src="{{ $user->photo }}" class="figure-img img-fluid rounded" width="110" alt="{{ $user->name }}">
                                     <figcaption class="figure-caption text-right">{{ $user->name }}</figcaption>
                                 </figure>
                             </div>
@@ -94,7 +94,7 @@
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('update.biodata') }}" method="POST">
+                                    <form action="{{ route('update.biodata.admin') }}" method="POST">
                                         @csrf
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control rounded-top @error('name')

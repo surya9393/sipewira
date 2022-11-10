@@ -146,7 +146,7 @@ class ProfileController extends Controller
         $upload = User::where('id', auth()->user()->id)->first();
         Storage::disk('local_public')->delete('upload/'.$upload->photo);
         //get All Data
-        $folderPath = public_path('upload/');
+        $folderPath = public_path('users/images/');
 
         $image_parts = explode(";base64,", $request->image);
         $image_type_aux = explode("image/", $image_parts[0]);
@@ -160,7 +160,7 @@ class ProfileController extends Controller
         file_put_contents($imageFullPath, $image_base64);
 
          DB::table('users')->where('id',auth()->user()->id)->update([
-            'photo' => $imageName
+            'photo' =>  'users/images/' . $imageName
         ]);
 
         return response()->json(['success'=>'Crop Image Uploaded Successfully']);

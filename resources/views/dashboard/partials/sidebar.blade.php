@@ -20,13 +20,13 @@
                 <ul class="nav flex-column mb-2">
                     <hr>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('dashboard/informasi') ? 'active' : ''}}" aria-current="page" href="#">
+                        <a class="nav-link {{ Request::is('informasi') ? 'active' : ''}}" aria-current="page" href="/informasi">
                         <i class="bi bi-newspaper"></i>
                         Informasi
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('dashboard/pengumuman') ? 'active' : ''}}" href="#">
+                        <a class="nav-link {{ Request::is('pengumuman') ? 'active' : ''}}" href="/pengumuman">
                         <i class="bi bi-card-list"></i>
                         Pengumuman
                         </a>
