@@ -7,7 +7,7 @@
                 <a href="index.html" class="logo d-flex align-items-center border-bottom mb-3">
                     <h4><i class="bi bi-building"></i>  SIPEWIRAUSAHA</h4>
                   </a>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.337248721835!2d106.82652141625479!3d-6.219181783206426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3f79a35f997%3A0x3877c5bc98573b28!2sDeputi%20Bidang%20Perkoperasian%20Kementerian%20Koperasi%20dan%20UKM!5e0!3m2!1sen!2sid!4v1666648839431!5m2!1sen!2sid" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.337248721835!2d106.82652141625479!3d-6.219181783206426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3f79a35f997%3A0x3877c5bc98573b28!2sDeputi%20Bidang%20Perkoperasian%20Kementerian%20Koperasi%20dan%20UKM!5e0!3m2!1sen!2sid!4v1666648839431!5m2!1sen!2sid" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="mb-3"></iframe>
 
             </div>
             <div class="col-sm-6">
