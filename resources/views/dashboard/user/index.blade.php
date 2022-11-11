@@ -35,7 +35,7 @@
             @endforeach
           </div>
           <div class="d-flex justify-content-center mt-5">
-            <a href="/dashboard/informasi" class="btn btn-primary">Lebih Banyak</a>
+            <a href="/informasi" class="btn btn-primary">Lebih Banyak</a>
         </div>
     </div>
 </div>

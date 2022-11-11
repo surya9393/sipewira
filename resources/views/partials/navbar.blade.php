@@ -7,8 +7,8 @@
         <h1>SIPE-<span>WIRAUSAHA</span></h1>
       </a>
       <nav id="navbar" class="navbar">
-            <ul class="">
-                <li><a href="/">Home</a></li>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
