@@ -58,6 +58,6 @@ class CropImageController extends Controller
 		'photo' => $nama_ktp,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/editprofile')->with('successupload', 'KTP Berhasil di Update');
+	return redirect('/pengguna')->with('successgantifoto', 'Foto Profil Berhasil di Update');
 }
 }

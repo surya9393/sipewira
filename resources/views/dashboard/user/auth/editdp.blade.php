@@ -120,9 +120,9 @@ url: "crop-image-upload",
 data: {'_token': $('meta[name="_token"]').attr('content'), 'image': base64data},
 success: function(data){
 console.log(data);
-$modal.modal('hide');
-alert("Crop image successfully uploaded");
-window.location.href = "/dashboard";
+$modal.modal('show');
+alert("Upload & Crop Foto Berhasil");
+window.location.href = "/pengguna";
 }
 });
 }

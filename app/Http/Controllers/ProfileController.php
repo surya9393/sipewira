@@ -144,7 +144,7 @@ class ProfileController extends Controller
     public function crop_proses(Request $request)
     {
         $upload = User::where('id', auth()->user()->id)->first();
-        Storage::disk('local_public')->delete('upload/'.$upload->photo);
+        Storage::disk('local_public')->delete($upload->photo);
         //get All Data
         $folderPath = public_path('users/images/');
 
@@ -168,9 +168,9 @@ class ProfileController extends Controller
 
     public function update_data(Request $request)
     {
-        $validated_data = $request->validate([
+        $request->validate([
             'name'=>'required|max:255',
-            'nip'=>['required'],
+            'nip'=>['required', 'min:6', 'max:18'],
             'phone'=>'required',
             'gender'=>'required',
             'unit_kerja'=>'required',
@@ -178,23 +178,34 @@ class ProfileController extends Controller
             'email'=>['required','email:dns'],
         ]);
 
-        DB::table('users')->where('id', auth()->user()->id)->update([
-            'name' => $request->name,
-            'nip' => $request->nip,
-            'phone' => $request->phone,
-            'gender'=> $request->gender,
-            'unit_kerja' => $request->unit_kerja,
-            'instansi'=> $request->instansi,
+       $update = DB::table('users')->where('id', auth()->user()->id)->update([
+            'name' => $request['name'],
+            'nip' => $request['nip'],
+            'phone' => $request['phone'],
+            'gender'=> $request['gender'],
+            'unit_kerja' => $request['unit_kerja'],
+            'instansi'=> $request['instansi'],
             'level' => '3',
-            'email' => $request->email
+            'email' => $request['email']
         ]);
-        return redirect('/dashboard')->with('success', 'Seleksi was successful!');
+
+        if($update)
+        return redirect()
+                        ->back()
+                        ->with('success', 'Profile Berhasil di Update');
+
+            return redirect()
+                        ->back()
+                        ->withInput()
+                        ->with('error', 'Profile Tidak ada yg Berubah');
+
+        // return redirect('/dashboard')->with('success', 'Seleksi was successful!');
     }
     public function update_data_admin(Request $request)
     {
-        $validated_data = $request->validate([
+        $request->validate([
             'name'=>'required|max:255',
-            'nip'=>['required'],
+            'nip'=>['required', 'min:6', 'max:18'],
             'phone'=>'required',
             'gender'=>'required',
             'unit_kerja'=>'required',
@@ -203,14 +214,14 @@ class ProfileController extends Controller
         ]);
 
         DB::table('users')->where('id', $request->uid)->update([
-            'name' => $request->name,
-            'nip' => $request->nip,
-            'phone' => $request->phone,
-            'gender'=> $request->gender,
-            'unit_kerja' => $request->unit_kerja,
-            'instansi'=> $request->instansi,
+            'name' => $request['name'],
+            'nip' => $request['nip'],
+            'phone' => $request['phone'],
+            'gender'=> $request['gender'],
+            'unit_kerja' => $request['unit_kerja'],
+            'instansi'=> $request['instansi'],
             'level' => '3',
-            'email' => $request->email
+            'email' => $request['email']
         ]);
         return redirect('/admin')->with('success', 'Seleksi was successful!');
     }

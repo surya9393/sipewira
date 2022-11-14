@@ -38,7 +38,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <img class="rounded mx-auto d-block" src="{{ asset('assets/img/content/daftar_usulan.jpeg') }}" alt="" height="500" data-aos="fade-up" data-aos-delay="100" role="presentation">
+                  <img class="rounded mx-auto d-block" src="{{ asset('assets/img/content/daftar_usulan.jpeg') }}" alt="" width="100%" data-aos="fade-up" data-aos-delay="100" role="presentation">
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <img class="rounded mx-auto d-block" src="{{ asset('assets/img/content/uji_kompetensi.jpeg') }}" alt="" height="500" data-aos="fade-up" data-aos-delay="100" role="presentation">
+                  <img class="rounded mx-auto d-block" src="{{ asset('assets/img/content/uji_kompetensi.jpeg') }}" alt="" width="100%" data-aos="fade-up" data-aos-delay="100" role="presentation">
                 </div>
               </div>
             </div>

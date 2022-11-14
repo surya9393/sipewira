@@ -1,7 +1,34 @@
 @extends('dashboard.layouts.main')
 @section('content')
+
 <div class="row">
     <div class="container col-lg-8">
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if (session()->has('successgantifoto'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @foreach ($errors->all() as $error)
+            <span><p>{{ $error }}</p></span>
+            @endforeach
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+        @endif
+        @if (session()->has('error'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="card">
             <h5 class="card-header text-center">Profile</h5>
             <div class="card-body">
@@ -63,7 +90,7 @@
                       @csrf
                       <div class="form-floating mb-3">
                           <input type="text" class="form-control rounded-top @error('name')
-                           is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ auth()->user()->name }}">
+                           is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ auth()->user()->name }}" required>
                           <label for="floatingInput">Nama Lengkap</label>
                           @error('name')
                           <div class="invalid-feedback">
@@ -73,7 +100,7 @@
                       </div>
                       <div class="form-floating mb-3">
                           <input type="text" class="form-control @error('nip')
-                          is-invalid @enderror" name="nip" id="nip" placeholder="NIP" value="{{ auth()->user()->nip }}">
+                          is-invalid @enderror" name="nip" id="nip" placeholder="NIP" value="{{ auth()->user()->nip }}" required>
                           <label for="floatingInput">NIP</label>
                           @error('nip')
                           <div class="invalid-feedback">
@@ -83,7 +110,7 @@
                       </div>
                       <div class="form-floating mb-3">
                           <input type="number" class="form-control rounded-top @error('phone')
-                           is-invalid @enderror" id="phone" placeholder="No Telp / WA" name="phone" value="{{ auth()->user()->phone }}">
+                           is-invalid @enderror" id="phone" placeholder="No Telp / WA" name="phone" value="{{ auth()->user()->phone }}" required>
                           <label for="floatingInput">Nomor Telp / WA</label>
                           @error('phone')
                           <div class="invalid-feedback">
@@ -93,7 +120,7 @@
                       </div>
                       <div class="form-floating mb-3">
                           <select name="gender" id="gender01" class="form-select @error('gender')
-                          is-invalid @enderror">
+                          is-invalid @enderror" required>
                               <option value="Laki-laki">Laki-laki</option>
                               <option value="Perempuan">Perempuan</option>
                           </select>
@@ -126,7 +153,7 @@
                       </div>
                       <div class="form-floating mb-3">
                           <input type="email" name="email" class="form-control @error('email')
-                          is-invalid @enderror" id="email" value="{{ auth()->user()->email }}">
+                          is-invalid @enderror" id="email" value="{{ auth()->user()->email }}" required>
                           <label for="floatingInput">Email</label>
                           @error('email')
                           <div class="invalid-feedback">
