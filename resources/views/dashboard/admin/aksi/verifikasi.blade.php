@@ -6,8 +6,8 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-    <div class="row mt-5">
-        <div class="container">
+    <div class="container">    
+        <div class="row mt-5">
             <h1 class="text-center">Pendaftar SIPEWIRAUSAHA</h1>
             <table class="table table-bordered mt-4">
                 <thead class="text-center">

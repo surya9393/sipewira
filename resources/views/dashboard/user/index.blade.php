@@ -8,11 +8,11 @@
 
         <div class="card  mt-5">
             <div class="card-header text-center">
-                VERSI 1.0 - PENDAFTARAN JABATAN FUNGSIONAL PENGEMBANGA KEWIRAUSAHAAN
+                VERSI 1.0 - PENDAFTARAN JABATAN FUNGSIONAL PENGEMBANG KEWIRAUSAHAAN
             </div>
             <div class="card-body">
               <h5 class="card-title">Sipewirausaha</h5>
-              <p class="card-text">Pimpinan Instansi Pemerintah menyampaikan daftar usulan PNS yang akan diangkat dalam Jabatan Fungsional Pengembang Kewirausahaan kepada Pimpinan Instansi Pembina dengan tembusan disampaikan kepada Menteri PANRB.</p>
+              <p class="card-text" style="text-align:justify;">Pimpinan Instansi Pemerintah menyampaikan daftar usulan PNS yang akan diangkat dalam Jabatan Fungsional Pengembang Kewirausahaan kepada Pimpinan Instansi Pembina dengan tembusan disampaikan kepada Menteri PANRB.</p>
               {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
             </div>
         </div>

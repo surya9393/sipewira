@@ -1,7 +1,7 @@
 @extends('dashboard.admin.layouts.main')
 @section('content')
-    <div class="row mt-5">
-        <div class="container">
+    <div class="container">
+        <div class="row mt-5">
             <h1 class="text-center">Data Diri</h1>
             <hr color="black">
             <div class="row mt-5">
@@ -71,7 +71,7 @@
                                         <select class="form-select" name="seleksi" required>
                                           <option selected value="">Hasil Seleksi</option>
                                           <option value="1">Lolos</option>
-                                          <option value="0">Gagal</option>
+                                          <option value="2">Gagal</option>
                                         </select>
                                     </div>
                                     <div class="text-end">
