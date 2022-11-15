@@ -56,18 +56,7 @@
         </div>
     </div>
     <hr>
-    <h1 class="text-center mt-5">AKUN</h1>
-    <div class="row mt-3 justify-content-center">
-        <div class="col-md-4 col-xl-6">
-            <div class="card bg-c-pastel order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Management Pengguna</h6>
-                    <h2 class="text-end"><i class="fa fa-users f-left"></i><span>Total: 10</span></h2>
-                    <p class="m-b-0">Laki-laki: 5<span class="f-right">Perempuan: 5</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </div>
 <style type="text/css">
     body{
