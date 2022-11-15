@@ -32,11 +32,11 @@ class AdminController extends Controller
                             ->where('gender', 'Perempuan')
                             ->get();
     //Gagal
-        $gagal = User::where('hasil', 0)->get();
-        $gagal_laki = User::where('hasil', 0)
+        $gagal = User::where('hasil', 2)->get();
+        $gagal_laki = User::where('hasil', 2)
                             ->where('gender', 'Laki-laki')
                             ->get();
-        $gagal_wanita = User::where('hasil', 0)
+        $gagal_wanita = User::where('hasil', 2)
                             ->where('gender', 'Perempuan')
                             ->get();
     //Berita
