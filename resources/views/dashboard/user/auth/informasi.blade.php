@@ -12,11 +12,11 @@
               <div class="card h-100">
                 <img src="/upload/berita/{{ $post->photo }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{ $post->title }}</h5>
+                  <h5 class="card-title"><a href="/informasi/{{ $post->id }}">{{ $post->title }}</a></h5>
                   <p class="card-text">{{ $post->excerpt }}</p>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted">Last updated 3 mins ago</small>
+                  <small class="text-muted">{{ $post->created_at->diffForHumans() }}</small>
                 </div>
               </div>
             </div>

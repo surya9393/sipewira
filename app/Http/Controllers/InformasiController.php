@@ -13,4 +13,10 @@ class InformasiController extends Controller
         ]);
         
     }
+
+    public function show($id){
+        return view('dashboard.user.auth.single_informasi', [
+            "posts" => Post::where('id', $id)->get()
+        ]);
+    }
 }

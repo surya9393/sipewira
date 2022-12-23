@@ -85,6 +85,7 @@ Route::controller(PenggunaController::class)->group(function(){
 });
 
 Route::get('/informasi', [InformasiController::class, 'index'])->middleware('auth');
+Route::get('/informasi/{id}', [InformasiController::class, 'show'])->middleware('auth');
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->middleware('auth');
 Route::get('/pengguna', [PenggunaController::class,'profile'])->middleware('auth');
 //edit pengguna
@@ -96,6 +97,7 @@ Route::resource('/verifikasi', VerifikasiController::class)->middleware('auth');
 Route::post('/seleksi', [SeleksiController::class, 'update'])->middleware('auth');
 //berita
 Route::post('/admin/prosesberita', [AdminController::class, 'store'])->name('admin.berita');
+Route::get('/admin/berita/{id}', [AdminController::class, 'show_post']);
 
 Route::get('/dashboard/upload', [UploadController::class, 'upload'])->middleware('auth');
 Route::post('/dashboard/upload/proses', [UploadController::class, 'proses_upload'])->middleware('auth');

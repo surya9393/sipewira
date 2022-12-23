@@ -41,22 +41,25 @@
         </div>
 	</div>
     <hr>
-    <h1 class="text-center mt-5">BERITA</h1>
+    <h1 class="text-center mt-5">INFORMASI</h1>
     <div class="row mt-3 justify-content-center">
         <div class="col-md-4 col-xl-6">
             <div class="card bg-c-yellow order-card">
                 <div class="card-block">
                     <a href="/admin/berita" class="text-light">
-                        <h3 class="mb-3">Posting Berita<span class="f-right"><i class="fa fa-angle-right" aria-hidden="true"></i></span></h3>
+                        <h3 class="mb-3">Posting Informasi<span class="f-right"><i class="fa fa-angle-right" aria-hidden="true"></i></span></h3>
                     </a>
-                    <h2 class="text-end"><i class="fa fa-newspaper f-left"></i><span>Total: 0</span></h2>
+                    <h2 class="text-end"><i class="fa fa-newspaper f-left"></i><span>Total: {{ $berita }}</span></h2>
                     <p class="m-b-0">Publish: 0<span class="f-right">Draft: 0</span></p>
                 </div>
             </div>
         </div>
     </div>
     <hr>
-    
+            <textarea name="editor5" id="editor5" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor 4.
+            </textarea>
+            
 </div>
 <style type="text/css">
     body{
@@ -114,4 +117,12 @@
 </style>
 
 
+@endsection
+
+@section('js')
+<script>
+    // Replace the <textarea id="editor1"> with a CKEditor 4
+    // instance, using default configuration.
+    CKEDITOR.replace( 'editor5' );
+</script>
 @endsection

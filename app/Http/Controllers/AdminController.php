@@ -39,7 +39,10 @@ class AdminController extends Controller
         $gagal_wanita = User::where('hasil', 2)
                             ->where('gender', 'Perempuan')
                             ->get();
-    //Berita
+    //Informasi
+        $berita = Post::all();
+        // $publish = Post::where('status', 1)->get();
+        // $draft = Post::where('status', 0)->get();
     //Total Pendaftar
         return view('dashboard.admin.index',[
             'title'=>'Dashboard',
@@ -51,7 +54,17 @@ class AdminController extends Controller
             'lolos_wanita' => $lolos_wanita->count(),
             'gagal' => $gagal->count(),
             'gagal_laki'=> $gagal_laki->count(),
-            'gagal_wanita' => $gagal_wanita->count()
+            'gagal_wanita' => $gagal_wanita->count(),
+            'berita' => $berita->count(),
+            // 'publish' => $publish->count(),
+            // 'draft' => $draft->count(),
+        ]);
+    }
+
+    public function show_post($id){
+        $upload = Post::where('id', $id)->get();
+            return view('dashboard.admin.berita.show_informasi',[
+            'posts'=>$upload,
         ]);
     }
 
