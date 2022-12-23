@@ -56,9 +56,7 @@
         </div>
     </div>
     <hr>
-            <textarea name="editor5" id="editor5" rows="10" cols="80">
-                This is my textarea to be replaced with CKEditor 4.
-            </textarea>
+            
             
 </div>
 <style type="text/css">
@@ -120,9 +118,4 @@
 @endsection
 
 @section('js')
-<script>
-    // Replace the <textarea id="editor1"> with a CKEditor 4
-    // instance, using default configuration.
-    CKEDITOR.replace( 'editor5' );
-</script>
 @endsection
